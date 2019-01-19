@@ -1,3 +1,4 @@
+//Ui işlemleri
 function Ui() {
     this.usdSpan = document.getElementById("live-usd");
     this.eurSpan = document.getElementById("live-eur");

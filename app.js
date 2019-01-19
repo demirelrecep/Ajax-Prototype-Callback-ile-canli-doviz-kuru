@@ -1,10 +1,8 @@
-const span = document.getElementById("live");
+setInterval(usdPrice,60000); //usdPrice fonksiyonu 60 saniyede bir çalışır
+setInterval(eurPrice,60000); //eurPrice fonksiyonu 60 saniyede bir çalışır
 
-setInterval(usdPrice,60000);
-setInterval(eurPrice,60000);
-
-const usd = new Usd;
-const eur = new Eur;
+const usd = new Usd; //Usd için yapılan ajax işlemleri
+const eur = new Eur; //Euro için yapılan ajax işlemleri
 const ui = new Ui;
 
 function usdPrice() {
@@ -12,17 +10,25 @@ function usdPrice() {
             if(err === null) {
                 ui.writeUsd(USD);
             }
-        }
-    );
-};
-function eurPrice() {
-    eur.eurPrice( function(err, EUR) {
-            if(err === null) {
-                ui.writeEur(EUR);
+            else{
+                console.log("Bir hata oluştu");
             }
         }
     );
 };
 
-usdPrice();
+function eurPrice() {
+    eur.eurPrice( function(err, EUR) {
+            if(err === null) {
+                ui.writeEur(EUR);
+            }
+            else{
+                console.log("Bir hata oluştu");
+            }
+        }
+    );
+};
+
+//Sayfa yüklendiğinde 60 saniye beklememek için burada fonksiyonlar 1 kere çalıştırılıyor.
+usdPrice(); 
 eurPrice();

@@ -1,3 +1,4 @@
+//Euro için yapılan ajax işlemleri
 function Eur (){
     this.xhr = new XMLHttpRequest;
 }
@@ -9,13 +10,12 @@ Eur.prototype.eurPrice = function(callback) {
         if(this.xhr.status === 200) {
             const json = JSON.parse(this.xhr.responseText);
             const TRY = json.rates.TRY;
-            callback(null,TRY.toFixed(2));
+            callback(null,TRY.toFixed(2)); //Euro kurunun virgülden sonraki değeri 2'ye düşürülüyor.
         }
         else {
             callback("Bir hata oluştu", null);
         }
     };
-
     this.xhr.send();
-}
+};
 
